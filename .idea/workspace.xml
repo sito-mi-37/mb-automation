@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41c9d838-a0fb-4bf3-b400-79da6932dde2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/pages/organisation/organisation_detail_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/base_driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/base_driver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/contact/contacts_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact/contacts_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/contact/create_new_contact_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact/create_new_contact_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/dashboard_page.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/test_create_contact.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_create_contact.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +28,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -47,6 +57,10 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DELL\PycharmProjects\memberbase_test_automation\testcases" />
+      <recent name="C:\Users\DELL\PycharmProjects\memberbase_test_automation\testdata" />
+      <recent name="C:\Users\DELL\PycharmProjects\memberbase_test_automation\pages\dashboard" />
+      <recent name="C:\Users\DELL\PycharmProjects\memberbase_test_automation\testcases\testcontactmodule" />
       <recent name="C:\Users\DELL\PycharmProjects\memberbase_test_automation\pages\contact" />
     </key>
   </component>
