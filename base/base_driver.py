@@ -33,6 +33,11 @@ class BaseDriver():
     def scroll_to_element(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
+    def scroll_to_page_top(self):
+        self.driver.execute_script("window.scrollTo(0, 0);")
+        time.sleep(2)
+
+
     def select_by_visible_text(self, value, element):
         cs = Select(element)
         cs.select_by_visible_text(value)

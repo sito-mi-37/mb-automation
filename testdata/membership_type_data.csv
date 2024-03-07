@@ -1,0 +1,8 @@
+customer_type, membership_type_name, duration, grace_period, renewal_type, renewal_due_date
+Contacts, Gold, 12, 7, rolling, 4
+Contacts, Silver, 12, 7, rolling, 1
+Contacts, Bronze, 12, 5, rolling, 3
+Contacts, Honorary, 12, 5, rolling, 3
+Organisations, Full membership, 12, 7, rolling, 7
+Organisations, Associate member, 12, 7, rolling, 7
+Organisations, Oversea, 12, 7, rolling, 7

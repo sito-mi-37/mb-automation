@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41c9d838-a0fb-4bf3-b400-79da6932dde2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pages/organisation/organisation_detail_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/memberbase_test_automation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/memberbase_test_automation.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/automation.log" beforeDir="false" afterPath="$PROJECT_DIR$/automation.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/base/base_driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/base_driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/contact/contacts_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact/contacts_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/contact/create_new_contact_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact/create_new_contact_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/dashboard_page.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/contact/contacts_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact/contacts_list_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/dashboard/dashboard_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/dashboard/dashboard_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/organisation/organisation_detail_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/organisation/organisation_detail_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/organisation/organisation_list_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/organisation/organisation_list_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testcases/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcases/test_create_contact.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_create_contact.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/test_create_contact.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_memberbase.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +25,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -43,6 +47,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "Python tests.Python tests for test_newdemo.TestCreateContact.executor": "Run",
     "Python tests.Python tests in memberbase_test_automation.executor": "Run",
     "Python tests.Python tests in test_newdemo.py.executor": "Run",
@@ -57,15 +62,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DELL\PycharmProjects\memberbase_test_automation" />
       <recent name="C:\Users\DELL\PycharmProjects\memberbase_test_automation\testcases" />
       <recent name="C:\Users\DELL\PycharmProjects\memberbase_test_automation\testdata" />
       <recent name="C:\Users\DELL\PycharmProjects\memberbase_test_automation\pages\dashboard" />
       <recent name="C:\Users\DELL\PycharmProjects\memberbase_test_automation\testcases\testcontactmodule" />
-      <recent name="C:\Users\DELL\PycharmProjects\memberbase_test_automation\pages\contact" />
     </key>
   </component>
   <component name="RunManager" selected="Python tests.pytest in testcases">
-    <configuration name="Python tests in test_create_contact.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests in test_memberbase.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="memberbase_test_automation" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -76,7 +81,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/testcases/test_create_contact.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/testcases/test_memberbase.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -100,11 +105,11 @@
     </configuration>
     <list>
       <item itemvalue="Python tests.pytest in testcases" />
-      <item itemvalue="Python tests.Python tests in test_create_contact.py" />
+      <item itemvalue="Python tests.Python tests in test_memberbase.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests in test_create_contact.py" />
+        <item itemvalue="Python tests.Python tests in test_memberbase.py" />
       </list>
     </recent_temporary>
   </component>
@@ -131,7 +136,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

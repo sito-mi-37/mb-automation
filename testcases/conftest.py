@@ -8,6 +8,12 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.by import By
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
+
+
 
 
 @pytest.fixture(scope="class")
@@ -20,13 +26,16 @@ def setup(request, browser):
     elif browser == "edge":
         driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
 
+    username = os.getenv("EMAIL_USERNAME")
+    password = os.getenv("PASSWORD")
 
     driver.get("https://world-health-organisation.memberbase-test.com/crm")
     driver.maximize_window()
-    driver.find_element(By.XPATH, "//input[@id='email']").send_keys("admin@memberbasecrm.com")
-    driver.find_element(By.XPATH, "//input[@id='password']").send_keys("PinkBlossom123!")
+    driver.find_element(By.XPATH, "//input[@id='email']").send_keys(username)
+    driver.find_element(By.XPATH, "//input[@id='password']").send_keys(password)
     time.sleep(2)
     driver.find_element(By.XPATH, "//span[@type='submit']").click()
+
     request.cls.driver = driver
     yield
     driver.close()

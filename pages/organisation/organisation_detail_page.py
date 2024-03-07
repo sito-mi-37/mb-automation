@@ -18,6 +18,14 @@ class OrganisationDetailsPage(BaseDriver):
     NOTES = "//span[contains(text(),'Notes')]"
     INTERACTIONS = "//span[contains(text(),'Interactions')]"
     MEMBERS = "//button[@dusk='members-tab']//span[contains(text(),'Members')]"
+    MANAGE_ORG_DROPDOWN = "//div[@id='Manage Organisation']//*[name()='svg']"
+    ADD_ADDRESS_OPTION = "//span[normalize-space()='Add Address']"
+    ADDRESS_FIELD = "//input[@id='line_1']"
+    COUNTRY_SELECT_FIELD = "//select[@id='country_code']"
+    ADDRESS_SUBMIT_BUTTON = "//button[@type='submit']"
+    ADD_NOTES_OPTION = "//span[normalize-space()='Add Note']"
+    NOTES_TESTAREA = "//textarea[@id='note']"
+    NOTES_SUBMIT = "//button[@type='submit']"
 
 
     def get_address_and_communication(self):
@@ -43,6 +51,30 @@ class OrganisationDetailsPage(BaseDriver):
 
     def get_members(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.MEMBERS)
+
+    def get_manage_org_dropdown(self):
+        return self.wait_for_element_to_be_clickable(By.XPATH, self.MANAGE_ORG_DROPDOWN)
+
+    def get_add_address(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.ADD_ADDRESS_OPTION)
+
+    def get_address_field(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.ADDRESS_FIELD)
+
+    def get_country_select_field(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.COUNTRY_SELECT_FIELD)
+
+    def get_address_submit_button(self):
+        return self.wait_for_element_to_be_clickable(By.XPATH, self.ADDRESS_SUBMIT_BUTTON)
+
+    def get_notes_options(self):
+        return self.wait_for_element_to_be_clickable(By.XPATH, self.ADD_NOTES_OPTION)
+
+    def get_notes_test_area(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.NOTES_TESTAREA)
+
+    def get_note_submit_button(self):
+        return self.wait_for_element_to_be_clickable(By.XPATH, self.NOTES_SUBMIT)
 
     def view_org_details(self):
         self.get_address_and_communication().click()
