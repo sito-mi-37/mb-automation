@@ -14,7 +14,7 @@ class CreateMembershipPage(BaseDriver):
     MEMBERSHIP_TYPE_NAME = "//input[@id='name']"
     DURATION_FIELD = "//input[@id='duration']"
     GRACE_PERIOD_FIELD = "//input[@id='grace_period_days']"
-    RENEWAL_TYPE_FIELD = "//select[@id='renewal_type']"
+    RENEWAL_TYPE = "renewal_type"
     RENEWAL_DUE_PERIOD_FIELD = "//input[@id='renewal_reminder_days']"
     PUBLISH_CHECKBOX = "//input[@id='published']"
     SUBMIT_BUTTON = "//button[@type='submit']"
@@ -38,14 +38,14 @@ class CreateMembershipPage(BaseDriver):
     def get_grace_period_field(self): 
         return self.wait_for_element_to_be_clickable(By.XPATH, self.GRACE_PERIOD_FIELD)
     
-    def get_renewal_type_field(self):
-        return self.wait_for_element_to_be_clickable(By.XPATH, self.RENEWAL_TYPE_FIELD)
+    def get_renewal_type(self):
+        return self.wait_for_element_to_be_clickable(By.ID, self.RENEWAL_TYPE)
     
     def get_renewal_due_period_field(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.RENEWAL_DUE_PERIOD_FIELD)
     
     def get_publish_checkbox(self):
-        return self.wait_for_element_to_be_clickable(By.XPATH, self.RENEWAL_DUE_PERIOD_FIELD)
+        return self.wait_for_element_to_be_clickable(By.XPATH, self.PUBLISH_CHECKBOX)
     
     def get_submit_button(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.SUBMIT_BUTTON)
@@ -69,7 +69,11 @@ class CreateMembershipPage(BaseDriver):
         self.get_membership_type_name_field().send_keys(membership_type_name)
         self.get_duration_field().send_keys(duration)
         self.get_grace_period_field().send_keys(grace_period)
-        self.select_by_visible_text(renewal_type, self.get_renewal_type_field())
+        self.scroll_to_element(self.get_duration_field())
+        # self.select_by_index(renewal_type, self.get_renewal_type())
+        # manually select Rolling renewal option.
+        self.get_renewal_type().click()
+        self.wait_for_visibility_of_element_located(By.XPATH, "//option[normalize-space()='Rolling']").click()
         self.get_renewal_due_period_field().send_keys(renewal_due_date)
         self.get_publish_checkbox().click()
         self.get_submit_button().click()

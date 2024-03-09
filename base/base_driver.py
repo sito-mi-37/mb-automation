@@ -42,3 +42,8 @@ class BaseDriver():
         cs = Select(element)
         cs.select_by_visible_text(value)
         time.sleep(2)
+
+    def select_by_index(self, index, element):
+        cs = Select(element)
+        cs.select_by_index(index)
+        time.sleep(3)

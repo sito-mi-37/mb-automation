@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from base.base_driver import BaseDriver
+import time
 
 
 class DashboardPage(BaseDriver):
@@ -42,3 +43,10 @@ class DashboardPage(BaseDriver):
 
     def admins_click(self):
         self.get_admins_module_button().click()
+
+    def reset_dashboard(self):
+        self.scroll_to_page_top()
+        self.click_dashboard_button()
+        time.sleep(2)
+
+
