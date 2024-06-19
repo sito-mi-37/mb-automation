@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from base.base_driver import BaseDriver
 from utilities.utils import Utils
+import time
 
 class CreateNewContact(BaseDriver):
     log = Utils.custom_logger()
@@ -14,6 +15,7 @@ class CreateNewContact(BaseDriver):
     EMAIL_ADDRESS_FIELD = "//input[@id='email_address']"
     CREATE_CONTACT_BUTTON = "//span[normalize-space()='Create Contact']"
     CANCEL_CONTACT_CREATION_BUTTON = "//a[normalize-space()='Cancel']"
+    TOAST_MESSAGE = "57NNUr9IP"
 
     def get_first_name_field(self):
         return self.wait_for_visibility_of_element_located(By.XPATH, self.FIRST_NAME_FIELD)
@@ -33,15 +35,18 @@ class CreateNewContact(BaseDriver):
     def get_cancel_contact_creation_button(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.CANCEL_CONTACT_CREATION_BUTTON)
 
-    def fill_out_required_fields(self, firstname, lastname, email):
+    def get_toast_message(self):
+        return self.wait_for_visibility_of_element_located(By.ID, self.TOAST_MESSAGE)
+
+    def fill_out_required_fields(self, firstname, surname, email):
         self.log.info("Filling out required contact fields")
         self.get_first_name_field().send_keys(firstname)
-
-        self.get_last_name_field().send_keys(lastname)
-
+        time.sleep(2)
+        self.get_last_name_field().send_keys(surname)
+        time.sleep(2)
         # click on communications tab
         self.get_communication_tab().click()
-
+        time.sleep(3)
         self.get_email_address_field().send_keys(email)
 
     def click_submit(self):
@@ -49,7 +54,8 @@ class CreateNewContact(BaseDriver):
         self.log.info("Submitting form")
         self.get_create_contact_button().click()
 
-    def create_a_new_contact(self, firstname, lastname, email):
-        self.fill_out_required_fields(firstname, lastname, email)
+    def create_a_new_contact(self, firstname, surname, email):
+        self.fill_out_required_fields(firstname, surname, email)
         self.click_submit()
+        # assert "created" in self.get_toast_message().text
 

@@ -5,17 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41c9d838-a0fb-4bf3-b400-79da6932dde2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/memberbase_test_automation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/memberbase_test_automation.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/automation.log" beforeDir="false" afterPath="$PROJECT_DIR$/automation.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/base/base_driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/base_driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/contact/contacts_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact/contacts_list_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/contact/contact_detail_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact/contact_detail_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/contact/create_new_contact_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact/create_new_contact_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/dashboard/dashboard_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/dashboard/dashboard_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/organisation/organisation_detail_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/organisation/organisation_detail_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/organisation/organisation_list_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/organisation/organisation_list_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/membership_type/create_membership_type_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/membership_type/create_membership_type_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testcases/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcases/test_create_contact.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_memberbase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/test_memberbase.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_memberbase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testdata/contact_data.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testdata/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/testdata/data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testdata/membership_type_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/testdata/membership_type_data.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,21 +46,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python tests.Python tests for test_newdemo.TestCreateContact.executor": "Run",
-    "Python tests.Python tests in memberbase_test_automation.executor": "Run",
-    "Python tests.Python tests in test_newdemo.py.executor": "Run",
-    "Python tests.pytest in testcases.executor": "Run",
-    "Python.conftest.executor": "Run",
-    "Python.newdemo.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/DELL/PycharmProjects/memberbase_test_automation/testcases/test_newdemo.py"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python tests.Python tests for test_newdemo.TestCreateContact.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in memberbase_test_automation.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_newdemo.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest in testcases.executor&quot;: &quot;Run&quot;,
+    &quot;Python.conftest.executor&quot;: &quot;Run&quot;,
+    &quot;Python.newdemo.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/PycharmProjects/memberbase_test_automation/testcases/test_newdemo.py&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\DELL\PycharmProjects\memberbase_test_automation" />

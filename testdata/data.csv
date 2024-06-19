@@ -1,2 +1,9 @@
 firstname,lastname,email
 daniel,bold,db@co.uk
+
+Contacts, Silver, 12, 7, 1, 150
+Contacts, Bronze, 12, 5, 3, 80
+Contacts, Honorary, 12, 5, 3, 0
+Organisations, Full membership, 12, 7, 7, 600
+Organisations, Associate member, 12, 7, 7, 300
+Organisations, Oversea, 12, 7, 7, 150

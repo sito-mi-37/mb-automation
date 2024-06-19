@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from base.base_driver import BaseDriver
 from datetime import date
@@ -19,11 +20,12 @@ class CreateMembershipPage(BaseDriver):
     PUBLISH_CHECKBOX = "//input[@id='published']"
     SUBMIT_BUTTON = "//button[@type='submit']"
     SET_PRICE_BUTTON = "//div[@id='Set Price']"
-    PRICE_START_DATE = f"//input[@placeholder={date.today()}]"
+    PRICE_START_DATE = f"//input[@placeholder='{date.today()}']"
     PRICE_AMOUNT_FIELD = "//input[@id='renewal_amount']"
     SET_PRICE_SUBMIT = "//button[@type='submit']"
 
-
+    C_MONTH_YEAR = "(//div[@class='vc-title vc-text-lg vc-text-gray-800 vc-font-semibold hover:vc-opacity-75'])[1]"
+    NEXT_BUTTON = "(//*[name()='svg'])[15]"
 
 
     def get_customer_type_field(self):
@@ -54,7 +56,7 @@ class CreateMembershipPage(BaseDriver):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.SET_PRICE_BUTTON)
     
     def get_price_start_date_field(self):
-        return self.wait_for_element_to_be_clickable(By.XPATH, self.PRICE_START_DATE)
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.PRICE_START_DATE)
     
     def get_price_amount_field(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.PRICE_AMOUNT_FIELD)
@@ -62,15 +64,20 @@ class CreateMembershipPage(BaseDriver):
     def get_set_price_submit(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.SET_PRICE_SUBMIT)
     
+    def get_c_month_year(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.C_MONTH_YEAR)
+    
+    def get_next_button(self):
+        return self.wait_for_element_to_be_clickable(By.XPATH, self.NEXT_BUTTON)
 
-    def create_membership_type(self, customer_type, membership_type_name, duration, grace_period, renewal_type, renewal_due_date):
+
+    def create_rolling_membership_type(self, customer_type, membership_type_name, duration, grace_period, renewal_due_date, amount):
         time.sleep(2)
         self.select_by_visible_text(customer_type, self.get_customer_type_field())
         self.get_membership_type_name_field().send_keys(membership_type_name)
         self.get_duration_field().send_keys(duration)
         self.get_grace_period_field().send_keys(grace_period)
         self.scroll_to_element(self.get_duration_field())
-        # self.select_by_index(renewal_type, self.get_renewal_type())
         # manually select Rolling renewal option.
         self.get_renewal_type().click()
         self.wait_for_visibility_of_element_located(By.XPATH, "//option[normalize-space()='Rolling']").click()
@@ -78,3 +85,24 @@ class CreateMembershipPage(BaseDriver):
         self.get_publish_checkbox().click()
         self.get_submit_button().click()
         time.sleep(3)
+        self.get_set_price_button().click()
+        # select  date
+        self.hover_over_element(self.get_price_start_date_field())
+        # action_chain = ActionChains(self.driver)
+        # action_chain.move_to_element(self.get_price_start_date_field()).perform()
+        month_year = self.get_c_month_year().text
+        self.get_next_button().click()
+
+        while month_year != "July 2024":
+            self.get_next_button().click()
+            time.sleep(2)   
+            month_year = self.get_c_month_year().text
+
+        self.wait_for_element_to_be_clickable(By.XPATH, "//span[@aria-label='Wednesday, July 3, 2024']").click()
+        print(date.today().strftime("%A, %B %d, %Y"))
+        self.get_price_start_date_field().send_keys("2024-09-12")
+        self.get_price_amount_field().send_keys(amount)
+        time.sleep(2)
+        self.get_set_price_submit().click()
+        time.sleep(5)
+        

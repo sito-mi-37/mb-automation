@@ -1,0 +1,3 @@
+membership_type, payment_method, contact_email
+gold, No payment, ncruz@example.com
+gold, Invoice, williamsolis@example.com

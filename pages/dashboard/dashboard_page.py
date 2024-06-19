@@ -14,6 +14,9 @@ class DashboardPage(BaseDriver):
     ORGANISATION_MODULE_BUTTON = "//a[normalize-space()='Organisations']"
     MEMBERSHIP_TYPE_BUTTON = "//a[normalize-space()='Membership Types']"
     ADMINS_MODULE_BUTTON = "//a[normalize-space()='Admins']"
+    CUSTOM_MODULE_BUTTON = "//a[normalize-space()='Custom Modules']"
+    CONFIGURATION_HEADER = "//h4[normalize-space()='Configuration']"
+    PAYMENT_PROVIDER_MODULE_BUTTON = "//a[normalize-space()='Payment Providers']"
 
 
     def click_dashboard_button(self):
@@ -31,6 +34,9 @@ class DashboardPage(BaseDriver):
     
     def get_admins_module_button(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.ADMINS_MODULE_BUTTON)
+    
+    def get_custom_modules_button(self):
+        return self.wait_for_element_to_be_clickable(By.XPATH, self.CUSTOM_MODULE_BUTTON)
 
     def contact_click(self):
         self.get_contact_module_button().click()
@@ -43,6 +49,9 @@ class DashboardPage(BaseDriver):
 
     def admins_click(self):
         self.get_admins_module_button().click()
+
+    def custom_modules_click(self):
+        self.get_custom_modules_button().click()
 
     def reset_dashboard(self):
         self.scroll_to_page_top()
