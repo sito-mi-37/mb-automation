@@ -1,5 +1,5 @@
 import time
-
+from datetime import datetime, timedelta
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
@@ -52,3 +52,10 @@ class BaseDriver():
     def hover_over_element(self, element):
         action_chain = ActionChains(self.driver)
         action_chain.move_to_element(element).perform()
+
+   
+    def get_x_days_ahead(self, days_ahead=0):
+        current_date = datetime.now()
+        return (current_date + timedelta(days=days_ahead)).strftime("%A, %B %d, %Y")
+    
+    

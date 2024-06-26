@@ -3,7 +3,7 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from datetime import date
-
+from selenium.webdriver.common.keys import Keys
 from base.base_driver import BaseDriver
 
 
@@ -70,6 +70,7 @@ class ContactDetailPage(BaseDriver):
     CANCEL_MEMBERSHIP_ACTION_DO_NOT_RENEW = "action_2"
     CANCEL_MEMBERSHIP_DATE_LEFT = f"//input[@placeholder='{date.today()}']"
     CANCEL_MEMBERSHIP_REASON_FOR_LEAVING = "//select[@id='leave_reason_id']"
+    CANCEL_MEMBERSHIP_COMMENT_TEXTAREA = "//textarea[@id='comments']"
     CANCEL_MEMBERSHIP_SUBMIT_BUTTON = "//button[@type='submit']"
 
     INVOICED_TO_ELEMENT = "//h4[normalize-space()='Invoiced To']"
@@ -81,16 +82,29 @@ class ContactDetailPage(BaseDriver):
 
     FINANCE_DROPDOWN = "//div[@id='Finance']"
     CREATE_INVOICE = "//span[normalize-space()='Create Invoice']"
-    CI_PRODUCT_CATEGORY_SELECT_FIELD = "//select[@id='product']"
+    CI_PRODUCT_CATEGORY_SELECT_FIELD = "//select[@id='product']" 
     CI_PRODUCT_SELECT_FIELD = "//select[@id='productItem']"
     CI_DUE_DATE = "//input[@class='w-full form-control form-input form-input-bordered input active']"
     CI_VAT = "//select[@id='VAT']"
     CI_LINE_1 = "(//input[@id='invoice_address_line_1'])[1]"
+    CI_TOWN = "//input[@id='invoice_address_town']"
     CI_CITY = "//input[@id='invoice_address_city']"
     CI_STATE = "//input[@id='invoice_address_state']"
     CI_COUNTRY = "//select[@id='invoice_address_country']"
     CI_CREATE_INVOICE_BUTTON = "//button[@type='submit']"
+    RECORD_PAYMENT = "//span[normalize-space()='Record Payment']"
+    RP_PAYMENT_AMOUNT_INPUT_FIELD = "//input[@id='amount_paid']"
+    RP_PAYMENT_METHOD_SELECT_FIELD = "//select[@id='payment_provider']"
+    RP_PAYMENT_DATE = f"//input[@placeholder='{date.today()}']"
+    RP_DESCRIPTION_TEXTAREA = "//textarea[@id='description']"
+    RP_SAVE_PAYMENT_BUTTON = "//span[normalize-space()='Save Payment']"
+    LINK_PAYMENT = "//span[normalize-space()='Link Payments']"
+    LP_LINK_PAYMENT_INPUT_FIELD = "//input[@placeholder='Payments']"
+    LP_ATTACH_SELECTED_PAYMENT_BUTTON = "//span[normalize-space()='Attach Selected Payments']"
 
+
+    # FINANCE CONSTANTS
+    BENEFICIARY_TABLE_HEADER = "//span[normalize-space()='Beneficiary']"
     VIEW_FIRST_INVOICE_ITEM = "(//*[name()='svg'][@role='presentation'])[5]"
     SETTLE_INVOICE_DROPDOWN = "//div[@id='Settle Invoice']"
     CREDIT_INVOICE_OPTION = "//span[normalize-space()='Credit Invoice']"
@@ -222,10 +236,10 @@ class ContactDetailPage(BaseDriver):
         return self.wait_for_visibility_of_element_located(By.ID, self.SOLE_MEMBERSHIP_CHECKBOX)
 
     def get_sole_membership_type_select_field(self):
-        return self.wait_for_visibility_of_element_located(By.ID, self.SOLE_MEMBERSHIP_TYPE_SELECT_FIELD)
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.SOLE_MEMBERSHIP_TYPE_SELECT_FIELD)
     
     def get_sole_membership_payment_method(self):
-        return self.wait_for_visibility_of_element_located(By.ID, self.SOLE_PAYMENT_METHOD_SELECT_FIELD)
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.SOLE_PAYMENT_METHOD_SELECT_FIELD)
     
     def get_sole_membership_activate_button(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.SOLE_MEMBERSHIP_ACTIVATE_BUTTON)
@@ -293,6 +307,9 @@ class ContactDetailPage(BaseDriver):
     def get_ci_line1(self):
         return self.wait_for_visibility_of_element_located(By.XPATH, self.CI_LINE_1)
     
+    def get_ci_town(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.CI_TOWN)
+    
     def get_ci_city(self):
         return self.wait_for_visibility_of_element_located(By.XPATH, self.CI_CITY)
 
@@ -305,9 +322,39 @@ class ContactDetailPage(BaseDriver):
     def get_ci_create_invoice_button(self):
         return self.wait_for_visibility_of_element_located(By.XPATH, self.CI_CREATE_INVOICE_BUTTON)
     
+    def get_record_payment(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.RECORD_PAYMENT)
+    
+    def get_rp_payment_amount_input_field(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.RP_PAYMENT_AMOUNT_INPUT_FIELD)
+    
+    def get_rp_payment_method_select_field(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.RP_PAYMENT_METHOD_SELECT_FIELD)
+    
+    def get_rp_payment_date(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.RP_PAYMENT_DATE)
+
+    def get_rp_description_textarea(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.RP_DESCRIPTION_TEXTAREA)
+   
+    def get_rp_save_payment_button(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.RP_SAVE_PAYMENT_BUTTON)
+
 
     def get_view_first_invoice_item(self):
         return self.wait_for_visibility_of_element_located(By.XPATH, self.VIEW_FIRST_INVOICE_ITEM)
+    
+    def get_link_payment_button(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.LINK_PAYMENT)
+    
+    def get_lp_link_payment_input_field(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.LP_LINK_PAYMENT_INPUT_FIELD)
+    
+    def get_lp_attach_selected_payment_button(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.LP_ATTACH_SELECTED_PAYMENT_BUTTON)
+
+    def get_beneficiary_table_header(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.BENEFICIARY_TABLE_HEADER)
     
     def get_settle_invoice_dropdown(self):
         return self.wait_for_visibility_of_element_located(By.XPATH, self.SETTLE_INVOICE_DROPDOWN)
@@ -356,6 +403,9 @@ class ContactDetailPage(BaseDriver):
     
     def get_cancel_membership_reason_for_leaving_select_field(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.CANCEL_MEMBERSHIP_REASON_FOR_LEAVING)
+
+    def get_cancel_membership_comment_textarea(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.CANCEL_MEMBERSHIP_COMMENT_TEXTAREA)
 
     def get_cancel_membership_submit_button(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.CANCEL_MEMBERSHIP_SUBMIT_BUTTON)
@@ -407,16 +457,18 @@ class ContactDetailPage(BaseDriver):
         self.get_cbu_change_button().click()
         time.sleep(2)
 
-    def activate_sole_membership(self, membership_type, payment_method):
+    def activate_sole_membership(self, membership_type):
         self.get_membership_dropdown().click()
         self.get_activate_membership_button().click()
         self.get_sole_membership_checkbox().click()
         self.select_by_visible_text(membership_type, self.get_sole_membership_type_select_field()) 
-        self.select_by_visible_text(payment_method, self.get_sole_membership_payment_method())
-        time.sleep(2)
+        # self.select_by_visible_text(payment_method, self.get_sole_membership_payment_method())
         self.get_sole_membership_activate_button().click()
+        time.sleep(4)
 
-    def cancel_contact_membership(self, action, date_left, reason_for_leaving):
+        
+
+    def cancel_contact_membership(self, action, reason_for_leaving, comment):
         self.get_membership_dropdown().click()
         self.get_cancel_membership().click()
         if(action == "Suspend"):
@@ -424,7 +476,14 @@ class ContactDetailPage(BaseDriver):
         else:
             self.get_cancel_action_suspend_checkbox().click()
         # add date selection
+        self.hover_over_element(self.get_cancel_membership_date_left())
+        self.wait_for_element_to_be_clickable(By.XPATH, f"//span[@aria-label='{self.get_x_days_ahead(-1)}']").click()
         self.select_by_visible_text(reason_for_leaving, self.get_cancel_membership_reason_for_leaving_select_field())
+        time.sleep(1)
+        self.get_cancel_membership_comment_textarea().send_keys(comment)
+        time.sleep(1)
+        self.get_cancel_membership_submit_button().click()
+        time.sleep(4)
 
 
     def change_membership_type_pay(self, new_membership_type, amount):
@@ -472,25 +531,62 @@ class ContactDetailPage(BaseDriver):
         self.get_change_number_submit_button().click()
         time.sleep(5)
 
-    def create_invoice(self, product_category, product, due_date,  vat, line1, city, state,country):
+    def create_invoice(self, product_category, product,  vat, line1, town, city, state,country):
         self.get_finance_dropdown().click()
         self.get_create_invoice().click()
-        time.sleep(2)
+        time.sleep(4)
         self.select_by_visible_text(product_category, self.get_ci_product_category_select_field())
+        time.sleep(1)
         self.select_by_visible_text(product, self.get_ci_product_select_field())
+        time.sleep(1)
         # add date
-        self.get_ci_due_date().click()
+        # self.get_ci_due_date().click()
         # please add date to continue
-
         self.select_by_visible_text(vat, self.get_ci_vat())
         self.get_ci_line1().send_keys(line1)
+        self.get_ci_town().send_keys(town)
         self.get_ci_city().send_keys(city)
         self.get_ci_state().send_keys(state)
         self.select_by_visible_text(country, self.get_ci_country())
         self.get_ci_create_invoice_button().click()
 
+    def record_payment(self, amount, payment_method, description):
+        self.get_finance_dropdown().click()
+        self.get_record_payment().click()
+        time.sleep(2)
+        self.get_rp_payment_amount_input_field().send_keys(amount)
+        self.select_by_visible_text(payment_method, self.get_rp_payment_method_select_field())
+        self.hover_over_element(self.get_rp_payment_date())
+        self.wait_for_element_to_be_clickable(By.XPATH, f"//span[@aria-label='{self.get_x_days_ahead(0)}']").click()
+        time.sleep(2)
+        self.get_rp_description_textarea().send_keys(description)
+        time.sleep(1)
+        self.scroll_to_element(self.get_rp_save_payment_button())
+        self.get_rp_save_payment_button().click()
+        time.sleep(1)
+
+    def settle_an_invoice_by_capturing_a_payment(self):
+        self.get_finance_tab().click()
+        time.sleep(4)
+        self.scroll_to_element(self.get_beneficiary_table_header())
+        self.get_view_first_invoice_item().click()
+        time.sleep(3)
+        self.get_settle_invoice_dropdown().click() 
+        self.get_link_payment_button().click()
+        time.sleep(1)
+        self.get_lp_link_payment_input_field().send_keys('PAY-MB-1')
+        self.get_lp_link_payment_input_field().send_keys(Keys.RETURN)
+        time.sleep(2)
+        self.get_lp_attach_selected_payment_button().click()
+        time.sleep(1)
+        
+
+
+
+
     def credit_customer_invoice(self, amount, notes):
         self.get_finance_tab().click()
+        self.scroll_to_element(self.get_beneficiary_table_header())
         self.get_view_first_invoice_item().click()
         time.sleep(3)
         self.get_settle_invoice_dropdown().click()
@@ -513,3 +609,4 @@ class ContactDetailPage(BaseDriver):
         self.get_poin_post_payment_submit_button().click()
 
    
+    

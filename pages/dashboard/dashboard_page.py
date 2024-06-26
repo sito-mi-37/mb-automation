@@ -12,12 +12,13 @@ class DashboardPage(BaseDriver):
     DASHBOARD = "//span[@class='text-white sidebar-label']"
     CONTACT_MODULE_BUTTON = "//a[normalize-space()='Contacts']"
     ORGANISATION_MODULE_BUTTON = "//a[normalize-space()='Organisations']"
+    GROUPS_MODULE_BUTTON = "//a[normalize-space()='Groups']"
     MEMBERSHIP_TYPE_BUTTON = "//a[normalize-space()='Membership Types']"
     ADMINS_MODULE_BUTTON = "//a[normalize-space()='Admins']"
     CUSTOM_MODULE_BUTTON = "//a[normalize-space()='Custom Modules']"
     CONFIGURATION_HEADER = "//h4[normalize-space()='Configuration']"
     PAYMENT_PROVIDER_MODULE_BUTTON = "//a[normalize-space()='Payment Providers']"
-
+    ADMINISTRATOR_SECTION_HEADER = "//h4[normalize-space()='Administration']"
 
     def click_dashboard_button(self):
         element = self.wait_for_element_to_be_clickable(By.XPATH, self.DASHBOARD)
@@ -37,6 +38,12 @@ class DashboardPage(BaseDriver):
     
     def get_custom_modules_button(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.CUSTOM_MODULE_BUTTON)
+    
+    def get_administrator_section_header(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.ADMINISTRATOR_SECTION_HEADER)
+    
+    def get_groups_module_button(self):
+        return self.wait_for_element_to_be_clickable(By.XPATH, self.GROUPS_MODULE_BUTTON)
 
     def contact_click(self):
         self.get_contact_module_button().click()
@@ -44,7 +51,11 @@ class DashboardPage(BaseDriver):
     def organisation_click(self):
         self.get_organisation_module_button().click()
 
+    def groups_click(self):
+        self.get_groups_module_button().click()
+
     def membership_type_click(self):
+        self.scroll_to_element(self.get_administrator_section_header())
         self.get_membership_type_module().click()
 
     def admins_click(self):
@@ -52,6 +63,7 @@ class DashboardPage(BaseDriver):
 
     def custom_modules_click(self):
         self.get_custom_modules_button().click()
+
 
     def reset_dashboard(self):
         self.scroll_to_page_top()

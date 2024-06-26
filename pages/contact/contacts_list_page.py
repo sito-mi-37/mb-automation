@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from base.base_driver import BaseDriver
 from utilities.utils import Utils
 
-class ContactPage(BaseDriver):
+class ContactListPage(BaseDriver):
     log = Utils.custom_logger()
     def __init__(self, driver):
         super().__init__(driver)
@@ -23,12 +23,12 @@ class ContactPage(BaseDriver):
 
 
 
-    def get_view_contact_button(self):
+    def get_view_first_contact_button(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.VIEW_CONTACT_BUTTON)
     def click_create_contact(self):
         self.wait_for_element_to_be_clickable(By.XPATH, self.CREATE_CONTACT_BUTTON).click()
 
-    def get_edit_contact_button(self):
+    def get_edit_first_contact_button(self):
         return self.wait_for_visibility_of_element_located(By.XPATH, self.EDIT_CONTACT_BUTTON)
 
     def get_quick_create_button(self):

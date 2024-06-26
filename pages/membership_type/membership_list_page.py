@@ -12,3 +12,5 @@ class MembershipListPage(BaseDriver):
     def get_create_membership_type_button(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.MEMBERSHIP_TYPE_BUTTON)
     
+    def click_create_membership_type_button(self):
+        self.get_create_membership_type_button().click()

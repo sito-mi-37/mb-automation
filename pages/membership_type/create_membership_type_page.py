@@ -24,7 +24,8 @@ class CreateMembershipPage(BaseDriver):
     PRICE_AMOUNT_FIELD = "//input[@id='renewal_amount']"
     SET_PRICE_SUBMIT = "//button[@type='submit']"
 
-    C_MONTH_YEAR = "(//div[@class='vc-title vc-text-lg vc-text-gray-800 vc-font-semibold hover:vc-opacity-75'])[1]"
+    C_MONTH_YEAR = "//div[@class='vc-title vc-text-lg vc-text-gray-800 vc-font-semibold hover:vc-opacity-75']"
+   
     NEXT_BUTTON = "(//*[name()='svg'])[15]"
 
 
@@ -62,7 +63,7 @@ class CreateMembershipPage(BaseDriver):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.PRICE_AMOUNT_FIELD)
     
     def get_set_price_submit(self):
-        return self.wait_for_element_to_be_clickable(By.XPATH, self.SET_PRICE_SUBMIT)
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.SET_PRICE_SUBMIT)
     
     def get_c_month_year(self):
         return self.wait_for_visibility_of_element_located(By.XPATH, self.C_MONTH_YEAR)
@@ -88,19 +89,18 @@ class CreateMembershipPage(BaseDriver):
         self.get_set_price_button().click()
         # select  date
         self.hover_over_element(self.get_price_start_date_field())
-        # action_chain = ActionChains(self.driver)
-        # action_chain.move_to_element(self.get_price_start_date_field()).perform()
+        
         month_year = self.get_c_month_year().text
-        self.get_next_button().click()
-
-        while month_year != "July 2024":
-            self.get_next_button().click()
-            time.sleep(2)   
-            month_year = self.get_c_month_year().text
-
-        self.wait_for_element_to_be_clickable(By.XPATH, "//span[@aria-label='Wednesday, July 3, 2024']").click()
+        print(month_year)
+        if month_year != "June 2024":
+            #  check if month_year is not June 2024
+             while month_year != "June 2024":
+                self.get_next_button().click()
+                time.sleep(2)   
+        time.sleep(4)                                  
+        self.wait_for_element_to_be_clickable(By.XPATH, "//span[@aria-label='Wednesday, June 19, 2024']").click()
         print(date.today().strftime("%A, %B %d, %Y"))
-        self.get_price_start_date_field().send_keys("2024-09-12")
+        # self.get_price_start_date_field().send_keys("2024-06-19")
         self.get_price_amount_field().send_keys(amount)
         time.sleep(2)
         self.get_set_price_submit().click()

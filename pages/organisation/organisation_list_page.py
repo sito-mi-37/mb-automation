@@ -17,12 +17,16 @@ class OrganisationListPage(BaseDriver):
     TELEPHONE_FIELD = "telephone1"
     EMAIL_FIELD = "//input[@id='emailAddress']"
     SUBMIT_BUTTON = "//button[@type='submit']"
+    SEARCH_INPUT = "//input[@class='appearance-none form-search w-search pl-search shadow']"
+
+    def get_search_input(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.SEARCH_INPUT)
 
     def get_view_organisation_button(self):
         return self.wait_for_visibility_of_element_located(By.XPATH, self.VIEW_ORGANISATION)
 
-    def get_edit_organisation_button(self):
-        return self.wait_for_visibility_of_element_located(By.XPATH, self.VIEW_ORGANISATION)
+    def get_edit_first_organisation_button(self):
+        return self.wait_for_visibility_of_element_located(By.XPATH, self.EDIT_ORGANISATION)
 
     def get_quick_create(self):
         return self.wait_for_element_to_be_clickable(By.XPATH, self.QUICK_CREATE)
